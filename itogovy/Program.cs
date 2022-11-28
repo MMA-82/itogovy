@@ -5,24 +5,41 @@
 Console.Write("Введите длину массива: ");
 int l = int.Parse(Console.ReadLine() ?? "0");
 Console.WriteLine("Наполним массив элементами, введите любое слово или число!");
-string[] array = new string[l];
-void FillArray(string[] array)
+string[] array1 = new string[l];
+void FillArray(string[] array1)
 {
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array1.Length; i++)
     {
         Console.Write($"Элемент {i + 1}: ");
-        array[i] = Console.ReadLine() ?? "0";
+        array1[i] = Console.ReadLine() ?? "0";
     }
 }
-FillArray(array);
+FillArray(array1);
 Console.WriteLine();
 
-Console.WriteLine("Получили массив: ");
-void PrintArray(string[] array)
+
+string[] array2 = new string[array1.Length];
+//int a2 = array2.Length;
+void SortArray(string[] array2)
 {
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array1.Length; i++)
     {
-        Console.Write($"{array[i]}, ");
+        int n = array1[i].Length;
+        if(n <= 3) 
+        {
+            array2[i] = array1[i];
+            //a2 = l - 1;
+        }
     }
 }
-PrintArray(array);
+SortArray(array2);
+
+Console.WriteLine("Получили массив: ");
+void PrintArray(string[] array2)
+{
+    for (int i = 0; i < array2.Length; i++)
+    {
+        Console.Write($"{array2[i]}, ");
+    }
+}
+PrintArray(array2);
