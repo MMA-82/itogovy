@@ -2,44 +2,41 @@
 //Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма. 
 //При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
 
-Console.Write("Введите длину массива: ");
+Console.Write("Задайте длину массива: ");
 int l = int.Parse(Console.ReadLine() ?? "0");
 Console.WriteLine("Наполним массив элементами, введите любое слово или число!");
-string[] array1 = new string[l];
-void FillArray(string[] array1)
+int m = 0;
+string[] arr1 = new string[l];
+void FillArray(string[] arr1)
 {
-    for (int i = 0; i < array1.Length; i++)
+    for (int i = 0; i < arr1.Length; i++)
     {
         Console.Write($"Элемент {i + 1}: ");
-        array1[i] = Console.ReadLine() ?? "0";
+        arr1[i] = Console.ReadLine() ?? "0";
+        if (arr1[i].Length <= 3) m++;
     }
 }
-FillArray(array1);
+FillArray(arr1);
 Console.WriteLine();
 
-
-string[] array2 = new string[array1.Length];
-//int a2 = array2.Length;
-void SortArray(string[] array2)
+int j = 0;
+string[] arr2 = new string[m];
+for (int i = 0; i < arr1.Length; i++)
 {
-    for (int i = 0; i < array1.Length; i++)
+    if (arr1[i].Length <= 3)
     {
-        int n = array1[i].Length;
-        if(n <= 3) 
-        {
-            array2[i] = array1[i];
-            //a2 = l - 1;
-        }
+        arr2[j] = arr1[i];
+        j++;
     }
 }
-SortArray(array2);
 
-Console.WriteLine("Получили массив: ");
-void PrintArray(string[] array2)
+Console.WriteLine("Отобрали в новый массив элементы, содержащие не более 3-х символов:");
+void PrintArray(string[] arr2)
 {
-    for (int i = 0; i < array2.Length; i++)
+    for (int i = 0; i < arr2.Length; i++)
     {
-        Console.Write($"{array2[i]}, ");
+        Console.Write($"{arr2[i]} ");
     }
+    Console.WriteLine();
 }
-PrintArray(array2);
+PrintArray(arr2);
